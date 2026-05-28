@@ -41,7 +41,7 @@ This project replicates that architecture end-to-end on Azure. Because real reta
   "product_category": "clothing",
   "price":            49.99,
   "quantity":         2,
-  "country":          "DE",
+  "country":          "US",
   "timestamp":        "2026-05-28T11:48:21.482Z"
 }
 ```
