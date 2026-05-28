@@ -116,3 +116,8 @@ Live streaming dashboards captured during steady-state operation showed **proces
 - **Delta Lake at the storage layer** unifies streaming and batch workloads against the same tables with ACID guarantees and time travel.
 - **Medallion separation** keeps the raw audit trail (Bronze) intact regardless of downstream schema changes, allowing Silver/Gold to be re-derived without re-ingesting from the source.
 - **Explicit per-query checkpoints** make every streaming query independently restartable and observable, which is essential for debugging and incident response in production.
+
+---
+
+## Note on reconciliation lag: 
+Because Gold uses outputMode("append") with a 10-minute watermark, windows are emitted only after the watermark has advanced past their end. In a long-running production stream with continuous arrivals, this lag is imperceptible; in a stopped-producer lab snapshot, the most recent windows remain in pending state until the next event arrives. This trade-off — exact, immutable, idempotent outputs in exchange for emission latency — is the correct choice for downstream BI consumption.
