@@ -45,7 +45,29 @@ This project replicates that architecture end-to-end on Azure. Because real reta
   "timestamp":        "2026-05-28T11:48:21.482Z"
 }
 ```
-
+### Folder Structure
+real-time-ecommerce-event-streaming/
+│
+├── README.md
+├── LICENSE
+│
+├── images + video/
+│   ├── 1st_stream_ingestion/
+│   ├── 2nd_stream_ingestion/
+│   └── final_visualization.jpg
+│
+└── scripts/
+    ├── 01_bronze.ipynb
+    ├── 01_bronze.py
+    ├── 02_silver.ipynb
+    ├── 02_silver.py
+    ├── 03_gold.ipynb
+    ├── 03_gold.py
+    ├── .gitignore
+    └── event_producer/
+        ├── producer.py
+        └── .env.example
+        
 ---
 
 ## Medallion Implementation
