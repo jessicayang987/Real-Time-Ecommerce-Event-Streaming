@@ -46,15 +46,16 @@ This project replicates that architecture end-to-end on Azure. Because real reta
 }
 ```
 ### Folder Structure
+
 real-time-ecommerce-event-streaming/
 │
 ├── README.md
 ├── LICENSE
 │
-├── images + video/
+├── portfolio_uploads/
 │   ├── 1st_stream_ingestion/
 │   ├── 2nd_stream_ingestion/
-│   └── final_visualization.jpg
+│   └── final_visualization.tif
 │
 └── scripts/
     ├── 01_bronze.ipynb
@@ -67,6 +68,7 @@ real-time-ecommerce-event-streaming/
     └── event_producer/
         ├── producer.py
         └── .env.example
+        
         
 ---
 
