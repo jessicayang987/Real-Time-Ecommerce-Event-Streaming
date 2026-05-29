@@ -31,7 +31,7 @@ This project replicates that architecture end-to-end on Azure. Because real reta
 | Storage | ADLS Gen2 + Delta Lake | Open-format lakehouse storage |
 | Governance | Unity Catalog | Catalogs, schemas, volumes, external locations, storage credentials |
 
-### Order event schema
+### Order Event Schema
 
 ```json
 {
@@ -45,7 +45,7 @@ This project replicates that architecture end-to-end on Azure. Because real reta
   "timestamp":        "2026-05-28T11:48:21.482Z"
 }
 ```
-### Folder Structure
+### Repository Structure
 ```text
 real-time-ecommerce-event-streaming/
 │
@@ -122,6 +122,8 @@ End-to-end **exactly-once delivery** was verified by reconciling source-to-sink 
 3. **No duplication** despite the mid-pipeline cluster restart.
 
 Live streaming dashboards captured during steady-state operation showed **processing rate consistently exceeding input rate** — each micro-batch processed faster than events arrived, confirming the pipeline operates with substantial headroom and isn't backpressured.
+<img width="3840" height="1812" alt="Final Visualization" src="https://github.com/user-attachments/assets/70c76c39-aa60-4c3e-a611-d9cd29536475" />
+
 
 ---
 
