@@ -46,7 +46,7 @@ This project replicates that architecture end-to-end on Azure. Because real reta
 }
 ```
 ### Folder Structure
-
+```text
 real-time-ecommerce-event-streaming/
 │
 ├── README.md
@@ -69,7 +69,7 @@ real-time-ecommerce-event-streaming/
         ├── producer.py
         └── .env.example
         
-        
+```        
 ---
 
 ## Medallion Implementation
