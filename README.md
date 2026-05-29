@@ -122,10 +122,9 @@ End-to-end **exactly-once delivery** was verified by reconciling source-to-sink 
 <img width="1918" height="1474" alt="1" src="https://github.com/user-attachments/assets/ee0f3b5b-dcec-4b21-82ce-96d7c5e9b5e8" />
 <img width="3840" height="1808" alt="2" src="https://github.com/user-attachments/assets/b796fb67-f42c-4459-b42a-bea5406cc771" />
 <img width="3838" height="1808" alt="3" src="https://github.com/user-attachments/assets/771b6e81-3834-4674-9e82-6451d5d29115" />
-<img width="3834" height="1818" alt="6" src="https://github.com/user-attachments/assets/59b25764-f8d4-451f-b12d-47d5737e09fb" />
+<img width="3834" height="1818" alt="6" src="https://github.com/user-attachments/assets/59b25764-f8d4-451f-b12d-47d5737e09fb" />      
 
-
-**Result: exact reconciliation across all stages.** The cumulative Bronze count of 56,966 equals the sum of producer-confirmed events (31,811 + 25,155), demonstrating:
+**Result: exact reconciliation across all stages.** The cumulative Bronze count of **56,966** equals the sum of producer-confirmed events **(31,811 + 25,155)**, demonstrating:
 
 1. **Zero data loss** through the Kafka → Event Hubs → Spark → Delta path.
 2. **Correct checkpoint resumption** — Run 2 resumed from the last committed offset rather than reprocessing historical events.
@@ -133,8 +132,7 @@ End-to-end **exactly-once delivery** was verified by reconciling source-to-sink 
 
 Live streaming dashboards captured during steady-state operation showed **processing rate consistently exceeding input rate** — each **micro-batch** processed faster than events arrived, confirming the pipeline operates with substantial headroom and isn't backpressured.
 
-<img width="3840" height="1812" alt="Final Visualization" src="https://github.com/user-attachments/assets/70c76c39-aa60-4c3e-a611-d9cd29536475" />
-
+<img width="3840" height="1812" alt="Final Visualization" src="https://github.com/user-attachments/assets/70c76c39-aa60-4c3e-a611-d9cd29536475" />    
 
 ---
 
@@ -148,7 +146,7 @@ Live streaming dashboards captured during steady-state operation showed **proces
 
 ---
 
-## Why this architecture
+## Why This Architecture
 
 - **Kafka protocol on Event Hubs** lets the same producer/consumer code run unchanged against either Apache Kafka or Event Hubs — eliminating vendor lock-in at the protocol level.
 - **Delta Lake at the storage layer** unifies streaming and batch workloads against the same tables with ACID guarantees and time travel.
@@ -157,5 +155,5 @@ Live streaming dashboards captured during steady-state operation showed **proces
 
 ---
 
-## Note on reconciliation lag: 
+## Note on Reconciliation Lag: 
 Because Gold uses outputMode("append") with a 10-minute watermark, windows are emitted only after the watermark has advanced past their end. In a long-running production stream with continuous arrivals, this lag is imperceptible; in a stopped-producer lab snapshot, the most recent windows remain in pending state until the next event arrives. This trade-off — exact, immutable, idempotent outputs in exchange for emission latency is the correct choice for downstream BI consumption.
