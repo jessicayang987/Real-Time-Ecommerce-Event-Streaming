@@ -104,6 +104,9 @@ Reads from the `silver_orders` Delta table. Applies event-time windowing to comp
 - **Output mode:** `append` — each window emits exactly one immutable row after the watermark passes its close, giving dashboard-ready, idempotent aggregates.
 - **Stateful checkpoint** at `/Volumes/eh_streaming/oms/checkpoints/gold` — in addition to offset and commit logs, the checkpoint persists the *running aggregation state* itself, so partial in-flight windows survive cluster restarts without recomputation.
 
+### Final BI Dashboard
+<img width="3840" height="1812" alt="Final Visualization" src="https://github.com/user-attachments/assets/70c76c39-aa60-4c3e-a611-d9cd29536475" />    
+
 ---
 
 ## Validation & Results
@@ -133,8 +136,6 @@ End-to-end **exactly-once delivery** was verified by reconciling source-to-sink 
 3. **No duplication** despite the mid-pipeline cluster restart.
 
 Live streaming dashboards captured during steady-state operation showed **processing rate consistently exceeding input rate** — each **micro-batch** processed faster than events arrived, confirming the pipeline operates with substantial headroom and isn't backpressured.
-
-<img width="3840" height="1812" alt="Final Visualization" src="https://github.com/user-attachments/assets/70c76c39-aa60-4c3e-a611-d9cd29536475" />    
 
 ---
 
