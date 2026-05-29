@@ -115,13 +115,24 @@ End-to-end **exactly-once delivery** was verified by reconciling source-to-sink 
 | Run 1 (initial backfill from `earliest`) | 31,811 | 31,811 | 0 | 31,811 |
 | Run 2 (resumed from checkpoint after restart) | 25,155 | 25,155 | 0 | **56,966** |
 
+<img width="2224" height="1430" alt="2" src="https://github.com/user-attachments/assets/4aeb5bf4-4cbb-414d-b7f9-85724161e1eb" />
+<img width="3834" height="1718" alt="4" src="https://github.com/user-attachments/assets/5d717ba9-339a-44b7-b5c9-65cae9306eb3" />
+<img width="2048" height="940" alt="5" src="https://github.com/user-attachments/assets/df969cf1-8366-49dc-8cda-740f9587d2b1" />
+
+<img width="1918" height="1474" alt="1" src="https://github.com/user-attachments/assets/ee0f3b5b-dcec-4b21-82ce-96d7c5e9b5e8" />
+<img width="3840" height="1808" alt="2" src="https://github.com/user-attachments/assets/b796fb67-f42c-4459-b42a-bea5406cc771" />
+<img width="3838" height="1808" alt="3" src="https://github.com/user-attachments/assets/771b6e81-3834-4674-9e82-6451d5d29115" />
+<img width="3834" height="1818" alt="6" src="https://github.com/user-attachments/assets/59b25764-f8d4-451f-b12d-47d5737e09fb" />
+
+
 **Result: exact reconciliation across all stages.** The cumulative Bronze count of 56,966 equals the sum of producer-confirmed events (31,811 + 25,155), demonstrating:
 
 1. **Zero data loss** through the Kafka → Event Hubs → Spark → Delta path.
 2. **Correct checkpoint resumption** — Run 2 resumed from the last committed offset rather than reprocessing historical events.
 3. **No duplication** despite the mid-pipeline cluster restart.
 
-Live streaming dashboards captured during steady-state operation showed **processing rate consistently exceeding input rate** — each micro-batch processed faster than events arrived, confirming the pipeline operates with substantial headroom and isn't backpressured.
+Live streaming dashboards captured during steady-state operation showed **processing rate consistently exceeding input rate** — each **micro-batch** processed faster than events arrived, confirming the pipeline operates with substantial headroom and isn't backpressured.
+
 <img width="3840" height="1812" alt="Final Visualization" src="https://github.com/user-attachments/assets/70c76c39-aa60-4c3e-a611-d9cd29536475" />
 
 
