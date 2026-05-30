@@ -8,7 +8,7 @@ A hands-on engineering lab implementing the end-to-end streaming architecture us
 
 ## Context
 
-Modern retailers operate global order supply chains where point-of-sale, web, and mobile channels generate continuous streams of order events that must be ingested, validated, enriched, and aggregated for real-time inventory, fraud, and revenue analytics. Production pipelines of this shape commonly sustain **10k+ events/sec** across hundreds of partitions worldwide.
+Modern retailers operate global order supply chains where point-of-sale, web, and mobile channels generate continuous streams of order events that must be ingested, validated, enriched, and aggregated for real-time inventory, fraud, and revenue analytics. Production pipelines of this shape commonly sustain a **10k+ events/sec** throughput across hundreds of partitions worldwide.
 
 This project replicates that architecture end-to-end on Azure. Because real retail order data is proprietary, the pipeline is fed by a **synthetic event generator** that produces JSON order events matching the schema, cardinality, and temporal characteristics of real retail telemetry — letting every component be exercised and validated under realistic conditions.
 
