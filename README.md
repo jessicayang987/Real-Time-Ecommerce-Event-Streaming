@@ -1,6 +1,6 @@
 # Real-Time E-Commerce Order Streaming Pipeline
 
-**Azure Event Hubs → Databricks Structured Streaming → Delta Lake (Medallion Architecture)**
+**Azure Event Hubs → Databricks Structured Streaming → Delta Lake (Medallion Architecture) + ADLS Gen2**
 
 A hands-on engineering lab implementing the end-to-end streaming architecture used by enterprise e-commerce retailers to ingest global order events in real time and serve them to analytics and operations teams within seconds.
 
