@@ -16,7 +16,7 @@ order_schema = StructType([
 
 # COMMAND ----------
 
-# ---- Read stream from Bronze ----
+# ---- Read stream from Bronze Delta Table ----
 silver_stream = (
     spark.readStream
     .table("eh_streaming.oms.bronze_orders")
