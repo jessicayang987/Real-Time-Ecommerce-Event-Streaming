@@ -77,7 +77,7 @@ real-time-ecommerce-event-streaming/
 
 ### 🥉 Bronze — raw event ingestion
 
-Reads directly from the Event Hubs Kafka endpoint over SASL/SSL (port 9093). Persists the raw JSON payload along with Kafka metadata (`topic`, `partition`, `offset`, `kafka_ts`) into a Delta table with **no transformations** — preserving source fidelity for replay, audit, and reprocessing.
+Reads directly from the **Event Hubs Kafka endpoint** over SASL/SSL (port 9093). Persists the raw JSON payload along with Kafka metadata (`topic`, `partition`, `offset`, `kafka_ts`) into a Delta table with **no transformations** — preserving source fidelity for replay, audit, and reprocessing.
 
 **Streaming semantics:**
 - **Explicit checkpoint** at `/Volumes/eh_streaming/oms/checkpoints/bronze`. Spark persists offset and commit logs to ADLS Gen2 so the stream resumes from the exact last committed offset after any cluster restart — the foundation of exactly-once delivery to the Delta sink.
