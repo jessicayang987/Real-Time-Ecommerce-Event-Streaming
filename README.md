@@ -80,7 +80,7 @@ real-time-ecommerce-event-streaming/
 Reads directly from the **Event Hubs Kafka endpoint** over SASL/SSL (port 9093). Persists the raw JSON payload along with Kafka metadata (`topic`, `partition`, `offset`, `kafka_ts`) into a Delta table with **no transformations** — preserving source fidelity for replay, audit, and reprocessing.
 
 **Streaming semantics:**
-- **Explicit checkpoint** at `/Volumes/eh_streaming/oms/checkpoints/bronze`. Spark persists offset and commit logs to ADLS Gen2 so the stream resumes from the exact last committed offset after any cluster restart — the foundation of exactly-once delivery to the Delta sink.
+- **Explicit checkpoint** at `/Volumes/eh_streaming/oms/checkpoints/bronze`. Spark persists offset and commit logs to ADLS Gen2 so the stream resumes from the exact last committed offset after any cluster restart — the foundation of fault tolerant, exactly-once delivery to the Delta sink.
 - **Micro-batch trigger:** `processingTime="10 seconds"` — balances ingestion latency against output file efficiency.
 - **Output mode:** `append` — every Event Hubs record becomes exactly one Delta row; no updates or deletes.
 - **`failOnDataLoss=false`** — defensively skips ahead rather than failing the query if source events age out of Event Hubs retention before being consumed.
